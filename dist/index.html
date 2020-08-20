@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+    <div class="container mx-auto px-2 py-4">
+        <h1 class="bg-indigo-500 text-3xl text-white font-bold text-center rounded hover:bg-indigo-200 hover:text-black px-2 border-2 border-indigo-800">
+            COOKIES - LOCAL STORAGE - SESSION STORAGE - and some Tailwind
+        </h1>
+        <p class="bg-white hover:bg-black text-indigo-700 my-2 px-2 rounded border-2 border-indigo-600">
+            TAILWIND<br><br>
+
+            *Install Tailwind: npm install tailwindcss<br>
+            Paste these into your css file:<br>
+            @tailwind base;<br><br>
+            @tailwind components;<br><br>
+            @tailwind utilities;<br><br>
+
+            *Use CDN(limited use): &ltlink href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"&gt<br><br>
+
+            *Customize defaults by creating a config file: npx tailwindcss init
+        </p>
+        <div class="grid grid-cols-3 gap-2">
+            <p class="bg-black hover:bg-blue-800 text-white my-2 px-2 rounded">
+                COOKIES<br><br>
+                Capacity: 4kb <span class="text-red-400">(much less capacity)</span><br>
+                Browsers: HTML4/HTML5 <span class="text-red-400">(compatible with much older browsers)</span><br>
+                Accessible From: Any window<br>
+                Expires: Manually set<br>
+                Storage Location: Browser and Server<br>
+                Sent with Requests: Yes <span class="text-red-400">(sent along with every request that occurs)</span>
+            </p>
+            <p class="bg-black hover:bg-blue-800 text-white my-2 px-2 rounded">
+                LOCAL STORAGE<br><br>
+                Capacity: 10mb <span class="text-red-400">(largest capacity)</span><br>
+                Browsers: HTML5<br>
+                Accessible From: Any window<br>
+                Expires: Never <span class="text-red-400">(handle clear in logic or user clears from browser)</span><br>
+                Storage Location: Browser only<br>
+                Sent with Requests: No
+            </p>
+            <p class="bg-black hover:bg-blue-800 text-white my-2 px-2 rounded">
+                SESSION STORAGE<br><br>
+                Capacity: 5mb<br>
+                Browsers: HTML5<br>
+                Accessible From: Same tab only<br>
+                Expires: On tab close<br>
+                Storage Location: Browser only<br>
+                Sent with Requests: No
+            </p>
+        </div>
+        <p class="bg-black hover:bg-blue-800 text-white my-2 px-2 rounded">
+            USE CASES between them<br><br>
+            Cookies are best for any data that needs to be accessed by both the server and the local machine as well as for anything that you want to set an expiration date on. 
+            Cookies are often used for things such as authentication information that need to be regularly sent back and forth. <br><br>
+            Local Storage and Session Storage will be appropriate for most use cases as long as modern browser compatibility is fine.
+        </p>
+        <p class="bg-black hover:bg-blue-800 text-white my-2 px-2 rounded">
+            IMPLEMENTATION <br><br>
+            <span class="text-yellow-300">LOCAL STORAGE:</span> (key value pairs)<br>
+            localStorage.setItem('name', 'Juanito') <br>
+            const name = localStorage.getItem('name') <br>
+            console.log(name) //'Juanito' <br>
+            localStorage.removeItem('name') //removes key/value<br>
+            localStorage.clear() //removes everything <br><br>
+            <span class="text-yellow-300">SESSION STORAGE:</span> (similar to local storage)<br>
+            sessionStorage.setItem('date', '8/20/20') <br>
+            const date = sessionStorage.getItem('date') <br>
+            console.log(date) //'8/20/20' <br>
+            sessionStorage.removeItem('date') //removes key/value<br>
+            sessionStorage.clear() //removes everything <br><br>
+            <span class="text-yellow-300">COOKIES:</span> (similar to local storage)<br>
+            // this cookie isn't defined with an expiration and will default to expire with the session <br>
+            document.cookie = 'hello=true' <br><br>
+            // this cookie has an expiration <br>
+            document.cookie = 'doSomethingOnlyOnce=true; expires=Fri, 31 Dec 9999 23:59:59 GMT' <br><br>
+            // this cookie also has a path parameter defined at the root; this parameter associates the cookie for use with a specified path
+            document.cookie = 'person=jorge; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/' <br><br>
+            // logging the cookie will log all of your cookies as one long string; you would need to use a parser to manage them individually <br>
+            console.log(document.cookie) <br><br>
+            // to delete a cookie... <br>
+            // reference the same key but omit the value, assign a past date, assign the same path if one was used <br>
+            document.cookie = 'person=; expires=Fri, 31 Dec 1980 00:00:00 GMT; path=/'
+        </p>
+    </div>
+</body>
+</html>
